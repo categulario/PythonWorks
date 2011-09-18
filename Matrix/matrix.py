@@ -103,31 +103,31 @@ class Matriz(object):
 		identidad	-> establece una matriz identidad (Si es False agrega valores aleatorios)
 		"""
 		if tipo=='rand':
-			if filas==columnas:
-				self.filas=filas
-				self.columnas=columnas
-				m=list()
-				for i in range(filas):
-					m.append(list())
-					for j in range(columnas):
-						if i==j:
-							m[i].append(1)
-						else:
-							m[i].append(0)
-				self.matriz=m
-				self.__type__='matriz'
-			else:
-				raise IdentityError('La matriz identidad debe ser cuadrada')
-		elif tipo=='identidad':
 			self.filas=filas
 			self.columnas=columnas
 			m=list()
-			for i in range(filas):
-				m.append(list())
-				for j in range(columnas):
-					m[i].append(random_integers(21)-11)
+                        for i in range(filas):
+                                m.append(list())
+                                for j in range(columnas):
+                                        m[i].append(random_integers(21)-11)
 			self.matriz=m
-			self.__type__='matriz'
+			self.__type__='matriz'			
+		elif tipo=='identidad':
+                        if filas==columnas:
+                                self.filas=filas
+                                self.columnas=columnas
+                                m=list()
+                                for i in range(filas):
+                                        m.append(list())
+                                        for j in range(columnas):
+                                                if i==j:
+                                                        m[i].append(1)
+                                                else:
+                                                        m[i].append(0)
+                                self.matriz=m
+                                self.__type__='matriz'
+                        else:
+				raise IdentityError('La matriz identidad debe ser cuadrada')
 		else:
 			self.filas=filas
 			self.columnas=columnas
