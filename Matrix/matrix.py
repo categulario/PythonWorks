@@ -106,27 +106,27 @@ class Matriz(object):
 			self.filas=filas
 			self.columnas=columnas
 			m=list()
-                        for i in range(filas):
-                                m.append(list())
-                                for j in range(columnas):
-                                        m[i].append(random_integers(21)-11)
+			for i in range(filas):
+				m.append(list())
+				for j in range(columnas):
+					m[i].append(random_integers(21)-11)
 			self.matriz=m
 			self.__type__='matriz'			
 		elif tipo=='identidad':
-                        if filas==columnas:
-                                self.filas=filas
-                                self.columnas=columnas
-                                m=list()
-                                for i in range(filas):
-                                        m.append(list())
-                                        for j in range(columnas):
-                                                if i==j:
-                                                        m[i].append(1)
-                                                else:
-                                                        m[i].append(0)
-                                self.matriz=m
-                                self.__type__='matriz'
-                        else:
+			if filas==columnas:
+				self.filas=filas
+				self.columnas=columnas
+				m=list()
+				for i in range(filas):
+					m.append(list())
+					for j in range(columnas):
+						if i==j:
+							m[i].append(1)
+						else:
+							m[i].append(0)
+				self.matriz=m
+				self.__type__='matriz'
+			else:
 				raise IdentityError('La matriz identidad debe ser cuadrada')
 		else:
 			self.filas=filas
@@ -211,10 +211,17 @@ class Matriz(object):
 		Matriz mxn
 		[[a1,...,an], [b1,...,bn],...,[p1,...,pn]]
 		"""
-		s=""
+		s="["
+		k=0
 		for i in self.matriz:
-			s+=str(i)+"\n"
-		return "Matriz "+str(self.filas)+"x"+str(self.columnas)+"\n"+s
+			if k==0:
+				s+=str(i)
+			else:
+				s+=" "+str(i)
+			if k!=len(self.matriz)-1:
+				s+=",\n"
+			k+=1
+		return "Matriz "+str(self.filas)+"x"+str(self.columnas)+"\n"+s+"]"
 
 	def traspuesta(self):
 		"""
