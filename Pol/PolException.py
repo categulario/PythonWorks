@@ -1,10 +1,4 @@
 #@{}[]|\&<>
 
-class InvalidPol(Exception):
-	"""
-	Se arroja cuando el usuario crea un polinomio invalido
-	"""
-	def __init__(self,msg):
-		self.msg=msg
-	def __str__(self):
-		return self.msg
+class InvalidPol(Exception): pass #Indica un argumento invalido
+class UnsupportedOperator(Exception): pass #Indica una operacion invalida
